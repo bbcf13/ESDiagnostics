@@ -1,37 +1,51 @@
+# ES Diagnostics Tool Usage
 
-===== Usage of ES Diagnotics tool =====
+## Setup on Client VM
 
+1. Choose any VM where you can install and run the tool. This can also be your laptop.
+2. Follow the steps below to download and install the tool.
 
-=== Setup of Tool in Client VM
+### Clone the Repository
 
-1. Pick any VM where you can install the tool and run it. It can be your laptop also.
-2. Follow below steps to download the tool and install it.
-
-#Clone the repo
-
+```bash
+git clone https://github.com/bbcf13/ESDiagnostics.git
 cd ESDiagnostics
+```
 
-#Make sure python 3.6+ exists
-python3 --version 
+### Ensure Python 3.6+ is Installed
 
-#Install the required python libraries
+```bash
+python3 --version
+```
+
+### Install Required Python Libraries
+
+```bash
 sudo python3 -m pip install -r ./required_packages.txt
+```
 
-=== Collecting the stats from ES VM
+## Collecting Stats from ES VM
 
-1. Login to ES VM
-2. Create getStatsFromES.sh using the repo folder you clones in last setp
-3. Run below command to collect the stats
+1. Log in to the ES VM.
+2. Create the `getStatsFromES.sh` script using the repo folder you cloned in the last step.
+3. Run the following command to collect the stats:
 
-  sh ./getStatsFromES.sh "ES URL" "Username" "Password"
-    example:  sh ./getStatsFromES.sh  "https://100.104.145.145:9200" "elastic" "K3RUJN8uLw"
+```bash
+sh ./getStatsFromES.sh "ES_URL" "Username" "Password"
+```
 
-4. The above command will create a stats zip under /tmp
+**Example:**
 
-5. Copy that zip to your client VM
+```bash
+sh ./getStatsFromES.sh "https://100.104.145.145:9200" "elastic" "K3RUJN8uLw"
+```
 
-=== Running the tool from Client VM
+4. The command above will create a stats zip file under `/tmp`.
+5. Copy the zip file to your client VM.
 
+## Running the Tool from Client VM
+
+```bash
 cd ESDiagnostics
 python3 es_search.py -StatsZipFile ESDiagnosticsDump.zip
-
+```
